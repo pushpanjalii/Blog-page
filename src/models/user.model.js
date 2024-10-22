@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 
 const userSchema = new Schema({
-    username: {
+    title: {
         type: String,
         required: true,
         unique: true,
@@ -17,25 +17,16 @@ const userSchema = new Schema({
         trim: true,
         index: true
     },
-    watchHistory: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "content"
-        }
-    ],
-refreshToken: {
-    type: String,
-    
-},
-
-    
-   }
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true,
+        index: true
+       },
+}
 
 )
 
-// userSchema.pre("save", async function (next) {
-//     this.password = bcrypt.hash(this.password, 10)
-//     next()
-// })
-
-export const User = mongoose.model("User", userSchema)
+export const blog = mongoose.model("blog", blogSchema);
